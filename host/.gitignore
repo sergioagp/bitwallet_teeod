@@ -1,0 +1,9 @@
+# ignore object files
+*.o
+
+# ignore executables
+helloworld_example
+
+# ignore any build directories
+/build
+

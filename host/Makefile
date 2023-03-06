@@ -15,7 +15,7 @@ CFLAGS += -Wall -I../ta/include -I$(TEEC_EXPORT) -I./include
 #Add/link other required libraries here
 LDADD += -lteeodc -L$(TEEC_EXPORT)
 
-BINARY = empty_example
+BINARY = helloworld_example
 
 .PHONY: all
 all: $(BINARY)

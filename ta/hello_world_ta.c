@@ -57,8 +57,8 @@ void TA_DestroyEntryPoint(void)
  * TA.
  */
 TEE_Result TA_OpenSessionEntryPoint(uint32_t param_types,
-		TEE_Param __maybe_unused params[4],
-		void __maybe_unused **sess_ctx)
+		TEE_Param params[4],
+		void **sess_ctx)
 {
 	uint32_t exp_param_types = TEE_PARAM_TYPES(TEE_PARAM_TYPE_NONE,
 						   TEE_PARAM_TYPE_NONE,
@@ -88,7 +88,7 @@ TEE_Result TA_OpenSessionEntryPoint(uint32_t param_types,
  * Called when a session is closed, sess_ctx hold the value that was
  * assigned by TA_OpenSessionEntryPoint().
  */
-void TA_CloseSessionEntryPoint(void __maybe_unused *sess_ctx)
+void TA_CloseSessionEntryPoint(void *sess_ctx)
 {
 	(void)&sess_ctx; /* Unused parameter */
 	IMSG("Goodbye!\n");
@@ -138,7 +138,7 @@ static TEE_Result dec_value(uint32_t param_types,
  * assigned by TA_OpenSessionEntryPoint(). The rest of the paramters
  * comes from normal world.
  */
-TEE_Result TA_InvokeCommandEntryPoint(void __maybe_unused *sess_ctx,
+TEE_Result TA_InvokeCommandEntryPoint(void *sess_ctx,
 			uint32_t cmd_id,
 			uint32_t param_types, TEE_Param params[4])
 {

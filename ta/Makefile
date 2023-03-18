@@ -20,3 +20,8 @@ all:
 .PHONY: clean
 clean:
 	@$(MAKE) -C $(TA_DEV_KIT_PATH) clean
+
+.PHONY: copy
+copy: $(BINARY)
+	@echo "Copying $(BINARY) to the $(SD_CARD_PATH)"
+	@cp $(build-dir-app)/$(local_module).bin $(SD_CARD_PATH)

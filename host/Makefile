@@ -9,13 +9,20 @@ OBJCOPY = $(CROSS_COMPILE)objcopy
 OBJDUMP = $(CROSS_COMPILE)objdump
 READELF = $(CROSS_COMPILE)readelf
 
-OBJS = main.o
+SRCS = main.c
 
-CFLAGS += -Wall -I../ta/include -I$(TEEC_EXPORT) -I./include
+
+CFLAGS += -Wall -I../ta/include -I$(TEEC_EXPORT) -I./include -I.
 #Add/link other required libraries here
-LDADD += -lteeodc -L$(TEEC_EXPORT)
+LDADD += -lteeodc -L$(TEEC_EXPORT) -lm
 
-BINARY = helloworld_example
+# Extract the parent directory name as the binary name
+DIR := $(shell dirname "$(CURDIR)")
+PARENT_DIR := $(shell basename "$(DIR)")
+
+BINARY := $(PARENT_DIR).elf
+
+OBJS := $(SRCS:.c=.o)
 
 .PHONY: all
 all: $(BINARY)
@@ -23,13 +30,18 @@ all: $(BINARY)
 
 $(BINARY): $(OBJS)
 	@echo "Linking $(BINARY)..."
-	@$(CC) $(LDFLAGS) -o $@ $< $(LDADD)
+	@$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LDADD)
+
+%.o: %.c
+	@echo "Compiling $<..."
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
 	@echo "Cleaning up..."
 	@rm -f $(OBJS) $(BINARY)
 
-%.o: %.c
-	@echo "Compiling $<..."
-	@$(CC) $(CFLAGS) -c $< -o $@
+.PHONY: copy
+copy: $(BINARY)
+	@echo "Copying $(BINARY) to the $(SD_CARD_PATH)"
+	@cp $(BINARY) $(SD_CARD_PATH)

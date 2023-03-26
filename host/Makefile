@@ -9,7 +9,7 @@ OBJCOPY = $(CROSS_COMPILE)objcopy
 OBJDUMP = $(CROSS_COMPILE)objdump
 READELF = $(CROSS_COMPILE)readelf
 
-SRCS = main.c
+SRCS = main.c tx.c
 
 
 CFLAGS += -Wall -I../ta/include -I$(TEEC_EXPORT) -I./include -I.

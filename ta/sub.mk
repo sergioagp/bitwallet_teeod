@@ -1,5 +1,61 @@
 global-incdirs-y += include
-srcs-y += hello_world_ta.c
+global-incdirs-y += .
+global-incdirs-y += trezor-crypto/
 
 # To remove a certain compiler flag, add a line like this
 #cflags-template_ta.c-y += -Wno-strict-prototypes
+
+# source file
+srcs-y	+= bitcoin_wallet_ta.c
+srcs-y	+= btc.c
+
+# adding trezor-crypto API required crypto functions
+srcs-y	+= trezor-crypto/address.c
+srcs-y	+= trezor-crypto/base32.c
+srcs-y	+= trezor-crypto/base58.c
+srcs-y	+= trezor-crypto/bignum.c
+srcs-y	+= trezor-crypto/bip32.c
+srcs-y	+= trezor-crypto/bip39.c
+srcs-y	+= trezor-crypto/blake2b.c
+srcs-y	+= trezor-crypto/blake2s.c
+srcs-y	+= trezor-crypto/blake256.c
+srcs-y	+= trezor-crypto/cash_addr.c
+srcs-y	+= trezor-crypto/curves.c
+srcs-y	+= trezor-crypto/ecdsa.c
+srcs-y	+= trezor-crypto/groestl.c
+srcs-y	+= trezor-crypto/hasher.c
+srcs-y	+= trezor-crypto/hmac_drbg.c
+srcs-y	+= trezor-crypto/hmac.c
+srcs-y	+= trezor-crypto/memzero.c
+srcs-y	+= trezor-crypto/nem.c
+srcs-y	+= trezor-crypto/nist256p1.c
+srcs-y	+= trezor-crypto/pbkdf2.c
+srcs-y	+= trezor-crypto/rand.c
+srcs-y	+= trezor-crypto/rc4.c
+srcs-y	+= trezor-crypto/rfc6979.c
+srcs-y	+= trezor-crypto/ripemd160.c
+srcs-y	+= trezor-crypto/script.c
+srcs-y	+= trezor-crypto/secp256k1.c
+srcs-y	+= trezor-crypto/segwit_addr.c
+srcs-y	+= trezor-crypto/sha2.c
+srcs-y	+= trezor-crypto/sha3.c
+srcs-y	+= trezor-crypto/shamir.c
+srcs-y	+= trezor-crypto/slip39.c
+srcs-y	+= trezor-crypto/aes/aes_modes.c
+srcs-y	+= trezor-crypto/aes/aescrypt.c
+srcs-y	+= trezor-crypto/aes/aeskey.c
+srcs-y	+= trezor-crypto/aes/aestab.c
+srcs-y	+= trezor-crypto/chacha20poly1305/chacha_merged.c
+srcs-y	+= trezor-crypto/chacha20poly1305/chacha20poly1305.c
+srcs-y	+= trezor-crypto/chacha20poly1305/poly1305-donna.c
+srcs-y	+= trezor-crypto/chacha20poly1305/rfc7539.c
+srcs-y	+= trezor-crypto/ed25519-donna/curve25519-donna-32bit.c
+srcs-y	+= trezor-crypto/ed25519-donna/curve25519-donna-helpers.c
+srcs-y	+= trezor-crypto/ed25519-donna/curve25519-donna-scalarmult-base.c
+srcs-y	+= trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.c
+srcs-y	+= trezor-crypto/ed25519-donna/ed25519-donna-basepoint-table.c
+srcs-y	+= trezor-crypto/ed25519-donna/ed25519-donna-impl-base.c
+srcs-y	+= trezor-crypto/ed25519-donna/ed25519-keccak.c
+srcs-y	+= trezor-crypto/ed25519-donna/ed25519-sha3.c
+srcs-y	+= trezor-crypto/ed25519-donna/ed25519.c
+srcs-y	+= trezor-crypto/ed25519-donna/modm-donna-32bit.c

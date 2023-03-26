@@ -5,7 +5,7 @@ TEEC_EXPORT ?= /home/spereira/Projects/TEEOD/teeod-lib/
 HOST_CROSS_COMPILE ?= /home/spereira/Projects/tools/Xilinx/Vitis/2022.2/gnu/aarch64/lin/aarch64-linux/bin/aarch64-linux-gnu-
 TA_CROSS_COMPILE ?= /usr/bin/arm-none-eabi-
 
-SD_CARD_PATH ?= /media/spereira/rootfs/home/petalinux/xtests-hw/
+SD_CARD_PATH ?= /media/spereira/rootfs/home/petalinux/teeod/bw/
 
 .PHONY: all
 all:

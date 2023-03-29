@@ -6,6 +6,7 @@
 #include <main.h>
 #include <stdlib.h>
 #include <tx.h>
+#include "time_measure.h"
 
 static TEEC_Result ta_bitcoin_cmd_check_masterkey(TEEC_Session sess, uint32_t pin, uint32_t cmd_id, uint32_t err_origin);
 static TEEC_Result ta_bitcoin_cmd_generate_new_masterkey(TEEC_Session sess, uint32_t pin, uint32_t cmd_id, uint32_t err_origin);
@@ -17,6 +18,8 @@ static TEEC_Result ta_bitcoin_cmd_get_bitcoin_address(TEEC_Session sess, uint32_
 
 int main(int argc, char *argv[])
 {
+  MEASURE_TIME_INIT();
+  MEASURE_TIME({
 	TEEC_Result res;
 	TEEC_Context ctx;
 	TEEC_Session sess;
@@ -104,7 +107,7 @@ int main(int argc, char *argv[])
 	TEEC_CloseSession(&sess);
 
 	TEEC_FinalizeContext(&ctx);
-
+});
 	return 0;
 }
 

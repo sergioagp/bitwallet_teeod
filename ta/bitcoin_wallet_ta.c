@@ -97,7 +97,7 @@ static TEE_Result check_masterkey(uint32_t param_types, TEE_Param params[4]){
 		DMSG("Master Key does not exist");
 	}
 
-#ifdef DEBUG
+#ifdef DEBUG_MODE
   DMSG("Public Key: ");
   for(int i=0; i<32; i++){
     printf("%x", node.public_key[i]);
@@ -113,6 +113,7 @@ static TEE_Result check_masterkey(uint32_t param_types, TEE_Param params[4]){
     printf("%x", node.chain_code[i]);
   }
   printf("\r\n");
+#endif
 	return TEE_SUCCESS;
 }
 
@@ -146,7 +147,7 @@ static TEE_Result generate_new_masterkey(uint32_t param_types, TEE_Param params[
     memcpy(params[1].memref.buffer, new_mnemonic, 128);
     params[1].memref.size = 128;
 
-
+#ifdef DEBUG_MODE
     IMSG("Generated mnemonic: %s\r\n", new_mnemonic);
 	  IMSG("\r\n");
     IMSG("Private Key: ");
@@ -159,6 +160,8 @@ static TEE_Result generate_new_masterkey(uint32_t param_types, TEE_Param params[
 		  printf("%x", node.chain_code[i]);
 	  }
 	  IMSG("\r\n");
+#endif
+
 	return TEE_SUCCESS;
 }
 
